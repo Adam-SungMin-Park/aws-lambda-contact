@@ -1,8 +1,12 @@
 'use strict';
 
 module.exports.hello = async (event) => {
-  return event
 
-  // Use this code if you don't use the http event with the LAMBDA-PROXY integration
-  // return { message: 'Go Serverless v1.0! Your function executed successfully!', event };
+    let phoneNumber=[];
+    while(phoneNumber.length < 10){
+      phoneNumber.push(Math.floor(Math.random()*10));
+
+    }
+    return phoneNumber.join('');
+
 };

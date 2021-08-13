@@ -25,7 +25,7 @@ provider:
   runtime: nodejs12.x
   lambdaHashingVersion: 20201221
   profile: serverless-admin
-  region: us-east-2
+  region: us-west-2
 
   # you can overwrite defaults here
   #  stage: dev
@@ -60,14 +60,10 @@ provider:
 #    - include-me-dir/**
 
 functions:
-  hello-short-timeout:
+  hello:
     handler: handler.hello
     timeout: 3
     memorySize: 128
-  hello-long-timeout:
-    timeout: 6
-    memorySize: 256
-    handler: handler.hello
 #    The following are a few example events you can configure
 #    NOTE: Please make sure to change your handler code to work with those events
 #    Check the event documentation for details
