@@ -85,10 +85,16 @@
               }
             }
           },
-          "HelloLogGroup": {
+          "HelloDashshortDashtimeoutLogGroup": {
             "Type": "AWS::Logs::LogGroup",
             "Properties": {
-              "LogGroupName": "/aws/lambda/hello-world-node-dev-hello"
+              "LogGroupName": "/aws/lambda/hello-world-node-dev-hello-short-timeout"
+            }
+          },
+          "HelloDashlongDashtimeoutLogGroup": {
+            "Type": "AWS::Logs::LogGroup",
+            "Properties": {
+              "LogGroupName": "/aws/lambda/hello-world-node-dev-hello-long-timeout"
             }
           },
           "IamRoleLambdaExecution": {
@@ -168,19 +174,44 @@
               }
             }
           },
-          "HelloLambdaFunction": {
+          "HelloDashshortDashtimeoutLambdaFunction": {
             "Type": "AWS::Lambda::Function",
             "Properties": {
               "Code": {
                 "S3Bucket": {
                   "Ref": "ServerlessDeploymentBucket"
                 },
-                "S3Key": "serverless/hello-world-node/dev/1628705896317-2021-08-11T18:18:16.317Z/hello-world-node.zip"
+                "S3Key": "serverless/hello-world-node/dev/1628723447242-2021-08-11T23:10:47.242Z/hello-world-node.zip"
               },
               "Handler": "handler.hello",
               "Runtime": "nodejs12.x",
-              "FunctionName": "hello-world-node-dev-hello",
-              "MemorySize": 1024,
+              "FunctionName": "hello-world-node-dev-hello-short-timeout",
+              "MemorySize": 128,
+              "Timeout": 3,
+              "Role": {
+                "Fn::GetAtt": [
+                  "IamRoleLambdaExecution",
+                  "Arn"
+                ]
+              }
+            },
+            "DependsOn": [
+              "HelloDashshortDashtimeoutLogGroup"
+            ]
+          },
+          "HelloDashlongDashtimeoutLambdaFunction": {
+            "Type": "AWS::Lambda::Function",
+            "Properties": {
+              "Code": {
+                "S3Bucket": {
+                  "Ref": "ServerlessDeploymentBucket"
+                },
+                "S3Key": "serverless/hello-world-node/dev/1628723447242-2021-08-11T23:10:47.242Z/hello-world-node.zip"
+              },
+              "Handler": "handler.hello",
+              "Runtime": "nodejs12.x",
+              "FunctionName": "hello-world-node-dev-hello-long-timeout",
+              "MemorySize": 256,
               "Timeout": 6,
               "Role": {
                 "Fn::GetAtt": [
@@ -190,17 +221,27 @@
               }
             },
             "DependsOn": [
-              "HelloLogGroup"
+              "HelloDashlongDashtimeoutLogGroup"
             ]
           },
-          "HelloLambdaVersion1IuIYh72YOAYKCGJm5TLGJrrtZ8kh8elM8DybTQ8Hwc": {
+          "HelloDashshortDashtimeoutLambdaVersionUVNfpLQ78QJgTdnvvBL3kxPynQPZLPxmg7UCsWshUsk": {
             "Type": "AWS::Lambda::Version",
             "DeletionPolicy": "Retain",
             "Properties": {
               "FunctionName": {
-                "Ref": "HelloLambdaFunction"
+                "Ref": "HelloDashshortDashtimeoutLambdaFunction"
               },
-              "CodeSha256": "N2T+ufoquBzhkaDxKjrhdTQ+IHhfQcb5RZdGTSBQ8j0="
+              "CodeSha256": "/VTe6p6oaxuic7AxI1nINtNAxpdO1wTcqZUIYSvsUek="
+            }
+          },
+          "HelloDashlongDashtimeoutLambdaVersionr6Bgl6gioDnUkW09LFKPUOi1NCng8arMT4GX0fIPRE8": {
+            "Type": "AWS::Lambda::Version",
+            "DeletionPolicy": "Retain",
+            "Properties": {
+              "FunctionName": {
+                "Ref": "HelloDashlongDashtimeoutLambdaFunction"
+              },
+              "CodeSha256": "/VTe6p6oaxuic7AxI1nINtNAxpdO1wTcqZUIYSvsUek="
             }
           }
         },
@@ -213,13 +254,22 @@
               "Name": "sls-hello-world-node-dev-ServerlessDeploymentBucketName"
             }
           },
-          "HelloLambdaFunctionQualifiedArn": {
+          "HelloDashshortDashtimeoutLambdaFunctionQualifiedArn": {
             "Description": "Current Lambda function version",
             "Value": {
-              "Ref": "HelloLambdaVersion1IuIYh72YOAYKCGJm5TLGJrrtZ8kh8elM8DybTQ8Hwc"
+              "Ref": "HelloDashshortDashtimeoutLambdaVersionUVNfpLQ78QJgTdnvvBL3kxPynQPZLPxmg7UCsWshUsk"
             },
             "Export": {
-              "Name": "sls-hello-world-node-dev-HelloLambdaFunctionQualifiedArn"
+              "Name": "sls-hello-world-node-dev-HelloDashshortDashtimeoutLambdaFunctionQualifiedArn"
+            }
+          },
+          "HelloDashlongDashtimeoutLambdaFunctionQualifiedArn": {
+            "Description": "Current Lambda function version",
+            "Value": {
+              "Ref": "HelloDashlongDashtimeoutLambdaVersionr6Bgl6gioDnUkW09LFKPUOi1NCng8arMT4GX0fIPRE8"
+            },
+            "Export": {
+              "Name": "sls-hello-world-node-dev-HelloDashlongDashtimeoutLambdaFunctionQualifiedArn"
             }
           }
         }
@@ -310,16 +360,29 @@
     },
     "pluginsData": {},
     "functions": {
-      "hello": {
+      "hello-short-timeout": {
         "handler": "handler.hello",
+        "timeout": 3,
+        "memorySize": 128,
         "events": [],
-        "name": "hello-world-node-dev-hello",
+        "name": "hello-world-node-dev-hello-short-timeout",
         "package": {},
-        "memory": 1024,
-        "timeout": 6,
+        "memory": 128,
         "runtime": "nodejs12.x",
         "vpc": {},
-        "versionLogicalId": "HelloLambdaVersion1IuIYh72YOAYKCGJm5TLGJrrtZ8kh8elM8DybTQ8Hwc"
+        "versionLogicalId": "HelloDashshortDashtimeoutLambdaVersionUVNfpLQ78QJgTdnvvBL3kxPynQPZLPxmg7UCsWshUsk"
+      },
+      "hello-long-timeout": {
+        "timeout": 6,
+        "memorySize": 256,
+        "handler": "handler.hello",
+        "events": [],
+        "name": "hello-world-node-dev-hello-long-timeout",
+        "package": {},
+        "memory": 256,
+        "runtime": "nodejs12.x",
+        "vpc": {},
+        "versionLogicalId": "HelloDashlongDashtimeoutLambdaVersionr6Bgl6gioDnUkW09LFKPUOi1NCng8arMT4GX0fIPRE8"
       }
     },
     "configValidationMode": "warn",
@@ -341,7 +404,7 @@
     "artifact": "/home/dev/repos/aws/hello-world-node/.serverless/hello-world-node.zip"
   },
   "package": {
-    "artifactDirectoryName": "serverless/hello-world-node/dev/1628705896317-2021-08-11T18:18:16.317Z",
+    "artifactDirectoryName": "serverless/hello-world-node/dev/1628723447242-2021-08-11T23:10:47.242Z",
     "artifact": "hello-world-node.zip"
   }
 }
