@@ -9,6 +9,6 @@ module.exports.hello = async (event) => {
       phoneNumber.push(Math.floor(Math.random()*10));
 
     }
-    return phoneNumber.join('');
+    return phoneNumber.join('').split("");
 
 };
