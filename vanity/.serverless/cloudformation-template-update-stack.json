@@ -74,7 +74,7 @@
     "HelloLogGroup": {
       "Type": "AWS::Logs::LogGroup",
       "Properties": {
-        "LogGroupName": "/aws/lambda/hello-world-node-dev-hello"
+        "LogGroupName": "/aws/lambda/vanity-dev-hello"
       }
     },
     "IamRoleLambdaExecution": {
@@ -102,7 +102,7 @@
               "Fn::Join": [
                 "-",
                 [
-                  "hello-world-node",
+                  "vanity",
                   "dev",
                   "lambda"
                 ]
@@ -119,7 +119,7 @@
                   ],
                   "Resource": [
                     {
-                      "Fn::Sub": "arn:${AWS::Partition}:logs:${AWS::Region}:${AWS::AccountId}:log-group:/aws/lambda/hello-world-node-dev*:*"
+                      "Fn::Sub": "arn:${AWS::Partition}:logs:${AWS::Region}:${AWS::AccountId}:log-group:/aws/lambda/vanity-dev*:*"
                     }
                   ]
                 },
@@ -130,7 +130,7 @@
                   ],
                   "Resource": [
                     {
-                      "Fn::Sub": "arn:${AWS::Partition}:logs:${AWS::Region}:${AWS::AccountId}:log-group:/aws/lambda/hello-world-node-dev*:*:*"
+                      "Fn::Sub": "arn:${AWS::Partition}:logs:${AWS::Region}:${AWS::AccountId}:log-group:/aws/lambda/vanity-dev*:*:*"
                     }
                   ]
                 }
@@ -143,7 +143,7 @@
           "Fn::Join": [
             "-",
             [
-              "hello-world-node",
+              "vanity",
               "dev",
               {
                 "Ref": "AWS::Region"
@@ -161,18 +161,13 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/hello-world-node/dev/1628834691785-2021-08-13T06:04:51.785Z/hello-world-node.zip"
+          "S3Key": "serverless/vanity/dev/1629176581500-2021-08-17T05:03:01.500Z/vanity.zip"
         },
         "Handler": "handler.hello",
         "Runtime": "nodejs12.x",
-        "FunctionName": "hello-world-node-dev-hello",
-        "MemorySize": 128,
-        "Timeout": 3,
-        "Environment": {
-          "Variables": {
-            "variable1": "value1"
-          }
-        },
+        "FunctionName": "vanity-dev-hello",
+        "MemorySize": 1024,
+        "Timeout": 6,
         "Role": {
           "Fn::GetAtt": [
             "IamRoleLambdaExecution",
@@ -184,14 +179,14 @@
         "HelloLogGroup"
       ]
     },
-    "HelloLambdaVersiono1lA3QDs7x5jF8DIIVDk1zD9Al438nMcaU7bBpYx2o": {
+    "HelloLambdaVersion2O4ed9x4BgUSp10aUd6Rd2eVEJ5nPuxmhb5lliwltE": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
         "FunctionName": {
           "Ref": "HelloLambdaFunction"
         },
-        "CodeSha256": "TPdmNWaVUZdgtps6Dw8rLFe7pNcAUME7XosSq9h50ao="
+        "CodeSha256": "NVV2/y6QKfkST5nzuWtKgfEeuQjqsSPGjp69VgiGg74="
       }
     }
   },
@@ -201,16 +196,16 @@
         "Ref": "ServerlessDeploymentBucket"
       },
       "Export": {
-        "Name": "sls-hello-world-node-dev-ServerlessDeploymentBucketName"
+        "Name": "sls-vanity-dev-ServerlessDeploymentBucketName"
       }
     },
     "HelloLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "HelloLambdaVersiono1lA3QDs7x5jF8DIIVDk1zD9Al438nMcaU7bBpYx2o"
+        "Ref": "HelloLambdaVersion2O4ed9x4BgUSp10aUd6Rd2eVEJ5nPuxmhb5lliwltE"
       },
       "Export": {
-        "Name": "sls-hello-world-node-dev-HelloLambdaFunctionQualifiedArn"
+        "Name": "sls-vanity-dev-HelloLambdaFunctionQualifiedArn"
       }
     }
   }
