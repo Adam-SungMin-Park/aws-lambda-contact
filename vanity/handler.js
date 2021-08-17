@@ -5,8 +5,10 @@ const ddb = new AWS.DynamoDB.DocumentClient({region:'us-west-2'});
 
 module.exports.hello = async (event, context, callback) => {
   const requestId = context.awsRequestId;
+  const number = event['Details']['ContactData']['CustomerEndpoint']['Address']
 
-  await createNumber(requestId).then(()=>{
+  console.log(number)
+  await createNumber(requestId,number).then(()=>{
     callback(null, {
       statusCode: 201,
       body:'',
@@ -20,11 +22,12 @@ module.exports.hello = async (event, context, callback) => {
 
 };
 
-function createNumber(requestId){
+function createNumber(requestId,number){
     const params = {
       TableName : 'VANITY_NUMBER',
       Item : {
-        'numberId': requestId
+        'numberId': requestId,
+        'customerNumber' : number
       }
     }
     return ddb.put(params).promise();
