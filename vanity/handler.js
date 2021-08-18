@@ -4,9 +4,8 @@ const AWS = require('aws-sdk');
 const ddb = new AWS.DynamoDB.DocumentClient({region:'us-west-2'});
 
 module.exports.vanity = async (event, context, callback) => {
-  const requestId = context.awsRequestId;
   const number = event['Details']['ContactData']['CustomerEndpoint']['Address']
-  const rawNum = number.split(1)[1];
+  const rawNum = number.slice(2);
   let vanityNumArray =[];
   let vanityNum = "";
 
@@ -96,7 +95,7 @@ module.exports.vanity = async (event, context, callback) => {
   vanityNumArray.push(vanityNum);
   vanityNum =""
   }
-  await createNumber(requestId,number,vanityNumArray).then(()=>{
+  await createNumber(number,vanityNumArray).then(()=>{
     callback(null, {
       statusCode: 201,
       body:'',
@@ -110,11 +109,10 @@ module.exports.vanity = async (event, context, callback) => {
 
 };
 
-function createNumber(requestId,number,vanityNumArray){
+function createNumber(number,vanityNumArray){
     const params = {
-      TableName : 'VANITY_NUMBER',
+      TableName : 'VANITY_NUMBERS',
       Item : {
-        'numberId': requestId,
         'customerNumber' : number,
         'vanity' :vanityNumArray
       }

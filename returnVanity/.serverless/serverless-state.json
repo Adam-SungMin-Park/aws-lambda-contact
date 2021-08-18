@@ -175,9 +175,9 @@
                 "S3Bucket": {
                   "Ref": "ServerlessDeploymentBucket"
                 },
-                "S3Key": "serverless/returnvanity/dev/1629257235166-2021-08-18T03:27:15.166Z/returnvanity.zip"
+                "S3Key": "serverless/returnvanity/dev/1629261673771-2021-08-18T04:41:13.771Z/returnvanity.zip"
               },
-              "Handler": "handler.hello",
+              "Handler": "handler.vanityReturn",
               "Runtime": "nodejs12.x",
               "FunctionName": "returnvanity-dev-hello",
               "MemorySize": 1024,
@@ -193,14 +193,14 @@
               "HelloLogGroup"
             ]
           },
-          "HelloLambdaVersionfMVCNx0SXHnrbDquVqzvXDWI98cwT0YanstplB1E": {
+          "HelloLambdaVersionMWgpSskvLu95YZiDrbBWoqLNqWmb9LLMNMy4g9LdM": {
             "Type": "AWS::Lambda::Version",
             "DeletionPolicy": "Retain",
             "Properties": {
               "FunctionName": {
                 "Ref": "HelloLambdaFunction"
               },
-              "CodeSha256": "N2T+ufoquBzhkaDxKjrhdTQ+IHhfQcb5RZdGTSBQ8j0="
+              "CodeSha256": "wB+lHIV36B1tuN2DyqsQMtwRcmVV8U144EJ2iOz4o1g="
             }
           }
         },
@@ -216,7 +216,7 @@
           "HelloLambdaFunctionQualifiedArn": {
             "Description": "Current Lambda function version",
             "Value": {
-              "Ref": "HelloLambdaVersionfMVCNx0SXHnrbDquVqzvXDWI98cwT0YanstplB1E"
+              "Ref": "HelloLambdaVersionMWgpSskvLu95YZiDrbBWoqLNqWmb9LLMNMy4g9LdM"
             },
             "Export": {
               "Name": "sls-returnvanity-dev-HelloLambdaFunctionQualifiedArn"
@@ -311,7 +311,7 @@
     "pluginsData": {},
     "functions": {
       "hello": {
-        "handler": "handler.hello",
+        "handler": "handler.vanityReturn",
         "events": [],
         "name": "returnvanity-dev-hello",
         "package": {},
@@ -319,7 +319,7 @@
         "timeout": 6,
         "runtime": "nodejs12.x",
         "vpc": {},
-        "versionLogicalId": "HelloLambdaVersionfMVCNx0SXHnrbDquVqzvXDWI98cwT0YanstplB1E"
+        "versionLogicalId": "HelloLambdaVersionMWgpSskvLu95YZiDrbBWoqLNqWmb9LLMNMy4g9LdM"
       }
     },
     "configValidationMode": "warn",
@@ -341,7 +341,7 @@
     "artifact": "/home/dev/repos/aws-lambda-contact/returnVanity/.serverless/returnvanity.zip"
   },
   "package": {
-    "artifactDirectoryName": "serverless/returnvanity/dev/1629257235166-2021-08-18T03:27:15.166Z",
+    "artifactDirectoryName": "serverless/returnvanity/dev/1629261673771-2021-08-18T04:41:13.771Z",
     "artifact": "returnvanity.zip"
   }
 }

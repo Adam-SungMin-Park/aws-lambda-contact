@@ -175,7 +175,7 @@
                 "S3Bucket": {
                   "Ref": "ServerlessDeploymentBucket"
                 },
-                "S3Key": "serverless/vanity/dev/1629258903959-2021-08-18T03:55:03.959Z/vanity.zip"
+                "S3Key": "serverless/vanity/dev/1629266164372-2021-08-18T05:56:04.372Z/vanity.zip"
               },
               "Handler": "handler.vanity",
               "Runtime": "nodejs12.x",
@@ -193,14 +193,14 @@
               "HelloLogGroup"
             ]
           },
-          "HelloLambdaVersionZRCb9c6ZsdzFUSEKi5unCtPpGOe4nmz8Az29k3Ug3w": {
+          "HelloLambdaVersionOLTSBoguVgTYSyUknbKgq3xEC3xCOH02xfQwdjGmTag": {
             "Type": "AWS::Lambda::Version",
             "DeletionPolicy": "Retain",
             "Properties": {
               "FunctionName": {
                 "Ref": "HelloLambdaFunction"
               },
-              "CodeSha256": "h0BmC+uD5KBtegyEJDT91cZLMQfAB7ZkwE0N6oqcYWo="
+              "CodeSha256": "yeQZDX17QKSltrhfp2OVZ4mtszs92WJjQFFfjI1f1Dc="
             }
           }
         },
@@ -216,7 +216,7 @@
           "HelloLambdaFunctionQualifiedArn": {
             "Description": "Current Lambda function version",
             "Value": {
-              "Ref": "HelloLambdaVersionZRCb9c6ZsdzFUSEKi5unCtPpGOe4nmz8Az29k3Ug3w"
+              "Ref": "HelloLambdaVersionOLTSBoguVgTYSyUknbKgq3xEC3xCOH02xfQwdjGmTag"
             },
             "Export": {
               "Name": "sls-vanity-dev-HelloLambdaFunctionQualifiedArn"
@@ -319,7 +319,7 @@
         "timeout": 6,
         "runtime": "nodejs12.x",
         "vpc": {},
-        "versionLogicalId": "HelloLambdaVersionZRCb9c6ZsdzFUSEKi5unCtPpGOe4nmz8Az29k3Ug3w"
+        "versionLogicalId": "HelloLambdaVersionOLTSBoguVgTYSyUknbKgq3xEC3xCOH02xfQwdjGmTag"
       }
     },
     "configValidationMode": "warn",
@@ -341,7 +341,7 @@
     "artifact": "/home/dev/repos/aws-lambda-contact/vanity/.serverless/vanity.zip"
   },
   "package": {
-    "artifactDirectoryName": "serverless/vanity/dev/1629258903959-2021-08-18T03:55:03.959Z",
+    "artifactDirectoryName": "serverless/vanity/dev/1629266164372-2021-08-18T05:56:04.372Z",
     "artifact": "vanity.zip"
   }
 }
