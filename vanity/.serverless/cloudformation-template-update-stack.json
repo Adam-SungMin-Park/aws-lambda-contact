@@ -161,7 +161,7 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/vanity/dev/1629258903959-2021-08-18T03:55:03.959Z/vanity.zip"
+          "S3Key": "serverless/vanity/dev/1629266164372-2021-08-18T05:56:04.372Z/vanity.zip"
         },
         "Handler": "handler.vanity",
         "Runtime": "nodejs12.x",
@@ -179,14 +179,14 @@
         "HelloLogGroup"
       ]
     },
-    "HelloLambdaVersionZRCb9c6ZsdzFUSEKi5unCtPpGOe4nmz8Az29k3Ug3w": {
+    "HelloLambdaVersionOLTSBoguVgTYSyUknbKgq3xEC3xCOH02xfQwdjGmTag": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
         "FunctionName": {
           "Ref": "HelloLambdaFunction"
         },
-        "CodeSha256": "h0BmC+uD5KBtegyEJDT91cZLMQfAB7ZkwE0N6oqcYWo="
+        "CodeSha256": "yeQZDX17QKSltrhfp2OVZ4mtszs92WJjQFFfjI1f1Dc="
       }
     }
   },
@@ -202,7 +202,7 @@
     "HelloLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "HelloLambdaVersionZRCb9c6ZsdzFUSEKi5unCtPpGOe4nmz8Az29k3Ug3w"
+        "Ref": "HelloLambdaVersionOLTSBoguVgTYSyUknbKgq3xEC3xCOH02xfQwdjGmTag"
       },
       "Export": {
         "Name": "sls-vanity-dev-HelloLambdaFunctionQualifiedArn"
