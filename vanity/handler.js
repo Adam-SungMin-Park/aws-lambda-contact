@@ -4,11 +4,12 @@ const AWS = require('aws-sdk');
 const ddb = new AWS.DynamoDB.DocumentClient({region:'us-west-2'});
 
 module.exports.vanity = async (event, context, callback) => {
+  //I needed to first extract the customer's number from the event.
   const number = event['Details']['ContactData']['CustomerEndpoint']['Address']
   const rawNum = number.slice(2);
   let vanityNumArray =[];
   let vanityNum = "";
-
+  //I wasn't so sure how to define "best", so I decided to pick 5 randomized vanity numbers and store them in to the array.
   for(let j = 0 ; j < 5; j++){
     for(let i = 0 ; i < rawNum.length; i++){
       if(rawNum[i]==="1"){
@@ -108,7 +109,7 @@ module.exports.vanity = async (event, context, callback) => {
   });
 
 };
-
+  //once I have created the vanity numbers, I made 'PUT' request to the database in order to save the info.
 function createNumber(number,vanityNumArray){
     const params = {
       TableName : 'VANITY_NUMBERS',
