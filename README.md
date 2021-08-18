@@ -40,6 +40,7 @@ Most of my difficulties were solved from reading the documentations and watching
 
 As I mentioned in the Shortcuts section, if I had more time, I would study more on the concepts and logics of Lambda function, DynamoDB and Contact Flow so that I can understand more fully about this problem. 
 After that, I would also consider more about what could be the "best" way to set an algorithm when generating vanity numbers. My current method of generating vanity number could be prone to bugs so I would definitely want to change the logic for this part. My contact flow does not have much components into it, other than invoking the Lambda functions. I think I did not fully utilize the purpose of Contact Flow which could greatly improve user interaction with the business/product.
+By the end of it, I still could not make Contact flow to say the 3 possible vanity from the database, I was only able to test this in my Lambda function. With more time I want to make this happen. 
 
 
 
