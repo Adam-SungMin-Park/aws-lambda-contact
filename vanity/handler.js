@@ -6,8 +6,16 @@ const ddb = new AWS.DynamoDB.DocumentClient({region:'us-west-2'});
 module.exports.hello = async (event, context, callback) => {
   const requestId = context.awsRequestId;
   const number = event['Details']['ContactData']['CustomerEndpoint']['Address']
+  let vanityNumberArray = [];
+  let vanityNum =""
+  const rawNum = number.split(1)[1];
+  //rawNum = 7144036969
+  for(let i = 0 ; i < rawNum.length; i++){
+    console.log(rawNum[i])
 
-  console.log(number)
+  }
+
+
   await createNumber(requestId,number).then(()=>{
     callback(null, {
       statusCode: 201,
